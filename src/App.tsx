@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import './App.css';
 
+
 type ObjectPropsType = {
-    id: number,
-    color: string,
+    id: number
+    color: string
     text: string
 }
 
@@ -18,18 +19,17 @@ function App() {
 
     const [arr, setArr] = useState(arrayObject);
 
-    const deleteObject = (el: ObjectPropsType) => {
-        let res = arr.filter(item => item.id !== el.id);
-        setArr([...res])
+    const deleteText = (item: ObjectPropsType) => {
+        let res = arr.filter(el => el.id !== item.id);
+        setArr([...res]);
     }
 
     return (
         <div className="App">
             <header className="App-header">
                 {arr.map(el => (
-                    <span key={el.id} onClick={() => deleteObject(el)} style={{color: el.color}}>{el.text}</span>
+                    <span key={el.id} style={{color: el.color}} onClick={()=> deleteText(el)}>{el.text}</span>
                 ))}
-
             </header>
         </div>
     );
